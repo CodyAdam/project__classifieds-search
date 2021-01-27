@@ -4,7 +4,7 @@ object HtToString extends Html2String{   //Made by William (Camtax53)
   
   def process(h:Html):String = {
     h match{
-      case(Tag(balise,attributs,childs)) => "<" + balise + " " +  processRecAttributs(attributs) + ">" + "\n" + processRec(childs)  + "</" + balise + ">" //gère les balises
+      case(Tag(balise,attributs,childs)) => "<" + balise  +  processRecAttributs(attributs) + ">" + "\n" + processRec(childs)  + "</" + balise + ">" //gère les balises
       case(Text(texte)) => texte +"\n"
       case null => ""
     }
