@@ -1,4 +1,5 @@
-class MyAnalysePage extends AnalysePage {
+
+object MyAnalysePage extends AnalysePage {//partie Zoé
   
   def resultats(url:String,exp:Expression):List[(String,String)]={
     
@@ -39,7 +40,7 @@ class MyAnalysePage extends AnalysePage {
     
   lcouplesvalides match {
     case Nil => Nil
-    case h::r => List(annexe4(htmlvalides(List(h))), h._1) ++ annexe3(r)
+    case h::r => List((annexe4(htmlvalides(List(h))) , h._1)) ++ annexe3(r)
   }
   
   }
