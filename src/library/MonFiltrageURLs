@@ -1,4 +1,4 @@
-object MonFiltrageURLs extends FiltrageURLs {
+object MonFiltrageURLs extends FiltrageURLs { // par Arthur et Mael
 
   /**
    * A partir d'un document Html h, rend la liste des URLs accessibles à partir
