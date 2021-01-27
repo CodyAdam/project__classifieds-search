@@ -1,11 +1,11 @@
 package library
 
-object R2Html extends ProductionResultat{         //Made by Thomega
+object R2html extends ProductionResultat{
   def resultat2html(l:List[(String,String)]):Html = {
     Tag("html",List(),
          List(Tag("head",List(),
                   List(Tag("meta",List(("content","text/html"),("charset","iso-8859-1")),List()),
-                  		Tag("title",List(),List(Text("Recherche Viva Street"))))),
+                  		Tag("title",List(),List(Text("Recherche Viva Street"))),Tag("style",List(),List(Text("a {background-color:black; color:white;} \nbody {background-color:black; color:white;}"))))),
               Tag("body",List(),List(
                   Text("&nbsp"),
                   Tag("center",List(),resultat2htmlRec(l))))))
