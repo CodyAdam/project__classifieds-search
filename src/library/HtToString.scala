@@ -1,6 +1,6 @@
 package library
 
-object HtToString extends Html2String{
+object HtToString extends Html2String{   //Made by William (Camtax53)
   
   def process(h:Html):String = {
     h match{
