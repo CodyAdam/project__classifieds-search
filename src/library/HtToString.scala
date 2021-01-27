@@ -1,6 +1,6 @@
 package library
 
-object HtToString extends Html2String{   //Made by William (Camtax53)
+object HtToString extends Html2String{
   
   def process(h:Html):String = {
     h match{
@@ -12,7 +12,7 @@ object HtToString extends Html2String{   //Made by William (Camtax53)
   
   def processRec(l : List[Html] ) : String = {
     l match{
-         case(Tag(balise,attributs,childs) :: d) => "<" + balise + " " + processRecAttributs(attributs) + ">"  + "\n"+ processRec(childs)  + "</" + balise + ">" +"\n" + processRec(d)
+         case(Tag(balise,attributs,childs) :: d) => "<" + balise  + processRecAttributs(attributs) + ">"  + "\n"+ processRec(childs)  + "</" + balise + ">" +"\n" + processRec(d)
          case Text(texte) :: reste => texte + "\n" + processRec(reste)
          case Nil => ""
     }
@@ -20,8 +20,8 @@ object HtToString extends Html2String{   //Made by William (Camtax53)
   
   def processRecAttributs(l : List[(String,String)] ) : String = {
     l match{
-      case (att1,att2) :: Nil => att1  + "=\"" + att2 + "\""
-      case (att1,att2) :: reste => att1 + "=\"" + att2 + "\";" + processRecAttributs(reste) 
+      case (att1,att2) :: Nil => " " + att1  + "=\"" + att2 + "\""
+      case (att1,att2) :: reste => " " + att1 + "=\"" + att2 + "\";" + processRecAttributs(reste) 
       case Nil => ""
     }
   }
