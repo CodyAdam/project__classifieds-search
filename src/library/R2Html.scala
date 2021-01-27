@@ -1,6 +1,6 @@
 package library
 
-object R2Html extends ProductionResultat{
+object R2Html extends ProductionResultat{         //Made by Thomega
   def resultat2html(l:List[(String,String)]):Html = {
     Tag("html",List(),
          List(Tag("head",List(),
