@@ -17,7 +17,7 @@ object MonFiltrageHtml extends FiltrageHtml { // Par Thomas B
     }
   }
 
-  def annexe(h: Html, e: String): Boolean = {
+  private def annexe(h: Html, e: String): Boolean = {
     h match {
       case Text(a) => a.contains(e)
       case Tag(_, _, a) => {
@@ -30,7 +30,7 @@ object MonFiltrageHtml extends FiltrageHtml { // Par Thomas B
     }
   }
 
-  def annexe2(h: List[Html], e: String): Boolean = {
+  private def annexe2(h: List[Html], e: String): Boolean = {
     h match {
       case first :: Nil   => annexe(first, e)
       case first :: reste => annexe(first, e) || annexe2(reste, e)
