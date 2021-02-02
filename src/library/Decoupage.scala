@@ -1,15 +1,17 @@
 package library
 
 trait AnalysePage{
-/** A partir d'une URL de requête sur le site de référence et d'une expression exp, 
-    retourne de pages issues de la requête et satisfaisant l'expression.
-
-    @param url l'URL de la requête sur le site de référence
-    @param exp l'expression à vérifier sur les pages trouvées
-    @return la liste des couples (titre,ref) où ref est l'URL d'une page
-            satisfaisant l'expression et titre est son titre. */
-  val objFiltrageUrls:FiltrageURLs
-  val objFiltrageHtml:FiltrageHtml
+  /**
+   * A partir d'une URL de requête sur le site de référence et d'une expression exp,
+   * retourne de pages issues de la requête et satisfaisant l'expression.
+   *
+   * @param url l'URL de la requête sur le site de référence
+   * @param exp l'expression à vérifier sur les pages trouvées
+   * @return la liste des couples (titre,ref) où ref est l'URL d'une page
+   * satisfaisant l'expression et titre est son titre.
+   */
+  val objFiltrageUrls: FiltrageURLs
+  val objFiltrageHtml: FiltrageHtml
   def resultats(url:String,exp:Expression):List[(String,String)]
 }
 
@@ -24,6 +26,7 @@ trait FiltrageURLs{
  */
   def filtreAnnonce(h:Html):List[String]
 }
+
 trait FiltrageHtml{
 /** A partir d'un document Html h et d'une requête e, dit si le document
     satisfait l'expression e 
@@ -54,3 +57,4 @@ trait Html2String{
  */
   def process(h:Html):String
 }
+

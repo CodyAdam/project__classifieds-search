@@ -1,6 +1,6 @@
 package library
 
-object Filtrage extends FiltrageHtml { // Par Thomas B
+object MonFiltrageHtml extends FiltrageHtml { // Par Thomas B
   /**
    * A partir d'un document Html h et d'une requête e, dit si le document
    * satisfait l'expression e

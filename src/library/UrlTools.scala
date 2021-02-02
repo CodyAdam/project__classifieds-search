@@ -37,7 +37,7 @@ trait UrlTools {
 
 /** L'objet parseur d'URL */
 
-object UrlProcessor extends UrlTools{
+object UrlProcessor extends UrlTools {
   
   // Use HtmlCleaner to obtain a valid (X)Html document 
 	   val cleaner = new HtmlCleaner
@@ -63,14 +63,15 @@ object UrlProcessor extends UrlTools{
 	   }
 	   catch {case _:Throwable => ""}
 	}
-	
-	/** Retourne la structure HTML parsée dans l'URL donnée.
-	 *  @param l'URL à lire 
-	 *  @return la structure Html trouvée à l'URL url
-	 *  @throws TagNodeConversionException en cas d'URL mal formée ou problème de connexion internet
-	 */
-	
-	   def fetch(url:String): Html={
+
+  /**
+   * Retourne la structure HTML parsée dans l'URL donnée.
+   *  @param l'URL à lire
+   *  @return la structure Html trouvée à l'URL url
+   *  @throws TagNodeConversionException en cas d'URL mal formée ou problème de connexion internet
+   */
+
+  def fetch(url: String): Html = {
 			   try {
 				   val u= new URL(url)
 						   val urlc = u.openConnection()
