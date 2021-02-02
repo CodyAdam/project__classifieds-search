@@ -1,3 +1,4 @@
+package library;
 
 object MyAnalysePage extends AnalysePage {//partie Zoé
   
@@ -47,7 +48,7 @@ object MyAnalysePage extends AnalysePage {//partie Zoé
   //renvoie le titre de la page parcourt tous les tags, si le tag est un titre récupérer son texte 
   def annexe4(html:List[Html]) : String = {
     html match{
-      case Nil => "Pas de titre"
+      case Nil => ""
       case h::r => h match{
                     case Text(_) => annexe4(r)
                     case Tag(n,_,l)=> if (n.equals("title")) annexe5(l)
@@ -60,7 +61,7 @@ object MyAnalysePage extends AnalysePage {//partie Zoé
   
   def annexe5(html:List[Html]):String = {
      html match{
-      case Nil => "Pas de titre"
+      case Nil => ""
       case h::r => h match{
                     case Text(x) => x
                     case Tag(n,_,l)=> annexe5(r) ++ annexe5(l)
