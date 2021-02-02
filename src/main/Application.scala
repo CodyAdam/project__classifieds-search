@@ -8,24 +8,30 @@ import library._;
 
 object Application extends App { // Romain
   val exp = readExp;
-  println("processing your expression ...");
+  
+  println("\nProcessing your expression ...");
   val listKeyWords = RequestVivastreet.getKeyWordsExpression(exp);
   val listRequests = RequestVivastreet.getRequestsList(listKeyWords);
-  println("searching results ...");
+
+  println("Searching results ...");
   val listResults = RequestVivastreet.getResults(listRequests, exp);
   val html = MonProductionResultat.resultat2html(listResults);
-  val htmlString = MonHtml2String.process(html);
-  println("writing results ...");
+  val htmlString = MonHtml2String.process(html); 
+  
+  println("Writing results ...");
   val file = new FileWriter("result.html");
   try {
     file.write(htmlString);
   } finally file.close()
-  println("showing results ...");
+  
+  println("Showing results ...");
   val desktop = Desktop.getDesktop();
   desktop.open(new File("result.html"));
+  
+  println("Done ✅");
 }
 
-object RequestVivastreet {
+private object RequestVivastreet {
   def getKeyWordsExpression(exp: Expression): List[String] = {
     exp match {
       case Word(w)     => List(w);
