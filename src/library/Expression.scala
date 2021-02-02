@@ -23,7 +23,7 @@ object ExpressionParser {
     var rep = ""
     var query: Expression = Word("")
     while (rep == "") {
-      println("Donnez votre requète sous forme de mots clés et combinés avec and/or\nPar exemple: developpeur and (rennes or nantes) and (python or java)")
+      println("Donnez votre requète sous forme de mots clés et combinés avec and/or\nPar exemple : peugeot and (307 or 308)")
       rep = readLine()
       val p = LocalParser.parse(rep)
       if (p.successful) query = p.get
