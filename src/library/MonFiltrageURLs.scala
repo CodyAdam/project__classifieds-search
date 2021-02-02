@@ -1,3 +1,5 @@
+package library;
+
 object MonFiltrageURLs extends FiltrageURLs { // par Arthur et Mael
 
   /**
@@ -21,7 +23,9 @@ object MonFiltrageURLs extends FiltrageURLs { // par Arthur et Mael
         case Text(_) => filtreAnnonceRec(l2)
         case Tag(a, l, child) =>
           if (a.equals("a")) {
-            List(baliseListeMatch(l)) ++ filtreAnnonceRec(child) ++ filtreAnnonceRec(l2)
+            val link = linkIsValid(l);
+            if(link != "") List(link) ++ filtreAnnonceRec(child) ++ filtreAnnonceRec(l2)
+            else filtreAnnonceRec(child) ++ filtreAnnonceRec(l2)
           }
           else
             filtreAnnonceRec(child) ++ filtreAnnonceRec(l2)
@@ -29,13 +33,24 @@ object MonFiltrageURLs extends FiltrageURLs { // par Arthur et Mael
     }
   }
 
-  private def baliseListeMatch(l: List[(String, String)]): String = {
+  /*private def baliseListeMatch(l: List[(String, String)]): String = {
     l match {
       case Nil => ""
       case (a, b) :: l2 =>
         if (a == "href") b
         else baliseListeMatch(l2)
     }
+  }*/
+  
+  private def linkIsValid(l: List[(String, String)]) : String = {
+    var link = "";
+    var isAProduct = false;
+    for ((attributeName,attributeValue) <- l){
+      if(attributeName == "class" && attributeValue == "clad__ad_link") isAProduct = true;
+      else if(attributeName == "href" && attributeValue.contains("http")) link = attributeValue;
+    }
+    if(isAProduct) return link;
+    return "";
   }
 
 }
