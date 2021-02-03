@@ -40,14 +40,22 @@ private object RequestVivastreet {
   /**
    * Récupère une liste de mots clés à partir de l'expression
    *
-   * @param exp une Expression 
-   * @return une liste de String qui représente les tags à rechercher sur vivastreet suivant les expressions exp 
+   * @param exp une Expression
+   * @return une liste de String qui représente les tags à rechercher sur vivastreet suivant les expressions exp
    */
   def getKeyWordsExpression(exp: Expression): List[String] = {
     exp match {
-      case Word(w)     => List(w);
-      case And(e1, e2) => getKeyWordsExpression(e1) ++ getKeyWordsExpression(e2);
-      case Or(e1, e2)  => getKeyWordsExpression(e1) ++ getKeyWordsExpression(e2);
+      case Word(w) => List(w);
+      case And(e1, e2) => {
+        var liste: List[String] = List()
+        for (x <- getKeyWordsExpression(e1)) {
+          for (y <- getKeyWordsExpression(e2)) {
+            liste = x + "+" + y :: liste
+          }
+        }
+        liste
+      }
+      case Or(e1, e2) => getKeyWordsExpression(e1) ++ getKeyWordsExpression(e2);
     }
   }
 
