@@ -7,7 +7,7 @@ object MonAnalysePage extends AnalysePage { //partie Zoé
 
   /**
    * A partir d'une URL de requête sur le site de référence et d'une expression exp,
-   * retourne de pages issues de la requête et satisfaisant l'expression.
+   * retourne une liste de pages issues de la requête et satisfaisant l'expression.
    *
    * @param url l'URL de la requête sur le site de référence
    * @param exp l'expression à vérifier sur les pages trouvées
@@ -22,6 +22,10 @@ object MonAnalysePage extends AnalysePage { //partie Zoé
     annexe3(lcouplesvalides)
   }
 
+  /**
+   * @param lUrls une liste d'urls
+   * @return la liste de couples qui associe aux Urls en entrée une page html
+   */
   private def annexe(lUrls: List[String]): List[(String, Html)] = {
 
     lUrls match {
@@ -30,6 +34,10 @@ object MonAnalysePage extends AnalysePage { //partie Zoé
     }
   }
 
+  /**
+   * @param lcouples une liste de couples Url-Html associés
+   * @return une liste de couples Url-Html (liste composée des couples de lcouples qui satisfont la requête uniquement)
+   */
   private def annexe2(lcouples: List[(String, Html)], exp: Expression): List[(String, Html)] = {
     lcouples match {
       case Nil => Nil
@@ -37,7 +45,11 @@ object MonAnalysePage extends AnalysePage { //partie Zoé
       else annexe2(r, exp)
     }
   }
-
+  
+  /**
+   * @param lcouplesvalides une liste de couples Url-Html
+   * @return une liste de html composée des html de chaque couples de lcouplesvalides
+   */
   private def htmlvalides(lcouplesvalides: List[(String, Html)]): List[Html] = {
     lcouplesvalides match {
       case Nil    => Nil
@@ -45,6 +57,10 @@ object MonAnalysePage extends AnalysePage { //partie Zoé
     }
   }
 
+  /**
+   * @param lcouplesvalides une liste de couples url-html qui satisfont la requête
+   * @return une liste de couples String/String (Url/Titre) où Titre est le titre de la page
+   */
   // parcourt toute la liste des couples valides, et on parcourt l'html pour trouver le titre de la page
   private def annexe3(lcouplesvalides: List[(String, Html)]): List[(String, String)] = {
 
@@ -53,9 +69,14 @@ object MonAnalysePage extends AnalysePage { //partie Zoé
       case h :: r => List((annexe4(htmlvalides(List(h))), h._1)) ++ annexe3(r)
     }
   }
+  
+  /**
+   * @param lhtml une liste de html
+   * @return le titre de la page trouvé
+   */
   //renvoie le titre de la page parcourt tous les tags, si le tag est un titre récupérer son texte
-  private def annexe4(html: List[Html]): String = {
-    html match {
+  private def annexe4(lhtml: List[Html]): String = {
+    lhtml match {
       case Nil => ""
       case h :: r => h match {
         case Text(_) => annexe4(r)
@@ -65,8 +86,12 @@ object MonAnalysePage extends AnalysePage { //partie Zoé
     }
   }
 
-  private def annexe5(html: List[Html]): String = {
-    html match {
+  /**
+   * @param lhtml une liste de html
+   * @return le titre de la page trouvé
+   */
+  private def annexe5(lhtml: List[Html]): String = {
+    lhtml match {
       case Nil => ""
       case h :: r => h match {
         case Text(x)      => x
