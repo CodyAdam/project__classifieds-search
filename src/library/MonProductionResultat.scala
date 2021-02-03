@@ -1,8 +1,8 @@
 package library
 
 object MonProductionResultat extends ProductionResultat { // Thomas D et Cody
-final val css: String = "a{text-decoration:none;font-size:18px;margin:4px;font-family:'Roboto', sans-serif;font-weight:300;color:white;transition: transform ease .5s;} \na:hover{transform: scale(1.2);font-size:25px;color:rgb(122, 71, 243);} \nh1{margin:30px;font-size:40px;font-family:'Roboto', sans-serif;font-weight:900;}\n.links{display:flex;justify-content:center;align-items:center;flex-direction:column;margin:0;}\n.container{height:100%;width:100%;display:flex;justify-content:center;align-items:center;flex-direction:column;margin:0;}\nbody{color:white;background-color:rgb(26, 25, 27);}"
-  /**
+   final val css: String = "a{text-decoration:none;font-size:18px;padding:4px;font-family:Roboto,sans-serif;font-weight:300;color:#fff;transition:transform ease .5s;text-align:center}a:hover{transform:scale(1.2);font-size:25px;color:#7a47f3}h1{margin:30px;font-size:40px;font-family:Roboto,sans-serif;font-weight:900}.links{display:flex;justify-content:center;align-items:center;flex-direction:column;margin:0}.container{height:100%;width:100%;display:flex;align-items:center;flex-direction:column;margin:0;overflow-y:auto}body{color:#fff;background-color:#1a191b}"
+   /**
    * A partir d'une liste de couples (titre,URL), produit un document Html, qui
    * liste les solutions sous la forme de liens cliquables
    *
