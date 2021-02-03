@@ -32,6 +32,10 @@ object Application extends App { // Romain
 }
 
 private object RequestVivastreet {
+  /**
+   * @param exp une Expression 
+   * @return une liste de String qui représente les tags à rechercher sur vivastreet suivant les expressions exp 
+   */
   def getKeyWordsExpression(exp: Expression): List[String] = {
     exp match {
       case Word(w)     => List(w);
