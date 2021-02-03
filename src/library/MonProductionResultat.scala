@@ -29,7 +29,7 @@ object MonProductionResultat extends ProductionResultat { // William et Thomas D
   private def resultat2htmlRec(l: List[(String, String)]): List[Tag] = {
     l match {
       case (title, link) :: rest =>
-        Tag("a", List(("href", link)), List(Text(title))) :: resultat2htmlRec(rest)
+        Tag("p",List(),List(Tag("a", List(("href", link)), List(Text(title))))) :: resultat2htmlRec(rest)
       case _ => List()
     }
   }
