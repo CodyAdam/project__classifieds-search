@@ -14,22 +14,34 @@ object MonFiltrageURLs extends FiltrageURLs { // par Arthur et Mael
     filtreAnnonceRec(List(h))
   }
 
-  private def filtreAnnonceRec(h: List[Html]): List[String] = {
-    h match {
+  /**
+   * A partir d'un liste d'éléments de type Html, rend la liste des URL qui sont des annonces 
+   * en parcourant en récursif chaque élément html
+   * @param lH la liste des éléments html du document html
+   * @return la liste des URLs d'annonces contenues dans lH
+   */
+  private def filtreAnnonceRec(lH: List[Html]): List[String] = {
+    lH match {
       case Nil => Nil
-      case html :: l2 => html match {
-        case Text(_) => filtreAnnonceRec(l2)
-        case Tag(a, l, child) =>
-          if (a.equals("a")) {
-            val link = linkIsValid(l);
-            if (link != "") List(link) ++ filtreAnnonceRec(child) ++ filtreAnnonceRec(l2)
-            else filtreAnnonceRec(child) ++ filtreAnnonceRec(l2)
+      case html :: rest => html match {
+        case Text(_) => filtreAnnonceRec(rest)
+        case Tag(name, attributes, children) =>
+          if (name.equals("a")) {
+            val link = linkIsValid(attributes);
+            if (link != "") List(link) ++ filtreAnnonceRec(children) ++ filtreAnnonceRec(rest)
+            else filtreAnnonceRec(children) ++ filtreAnnonceRec(rest)
           } else
-            filtreAnnonceRec(child) ++ filtreAnnonceRec(l2)
+            filtreAnnonceRec(children) ++ filtreAnnonceRec(rest)
       }
     }
   }
 
+  
+  /**
+   * A partir d'une liste d'attributs d'une balise renvoie le lien sous forme de String si c'est une annonce
+   * @param l une liste de tuples de chaînes de caractères 
+   * @return une URL valide correspondant à une annonce
+   */
   private def linkIsValid(l: List[(String, String)]): String = {
     var link = "";
     var isAProduct = false;
