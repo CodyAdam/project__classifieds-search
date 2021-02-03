@@ -1,6 +1,6 @@
 package library
 
-object MonHtml2String extends Html2String { // Thomas D
+object MonHtml2String extends Html2String { // William B & Thomas D
   /**
    * Produit la chaîne de caractère correspondant à un document Html
    *
