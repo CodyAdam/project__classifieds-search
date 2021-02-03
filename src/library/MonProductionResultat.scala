@@ -1,5 +1,8 @@
 package library
 
+/**
+ * Implementation du trait ProductionResultat
+ */
 object MonProductionResultat extends ProductionResultat { // Thomas D et Cody
    final val css: String = "a{text-decoration:none;font-size:18px;padding:4px;font-family:Roboto,sans-serif;font-weight:300;color:#fff;transition:transform ease .5s;text-align:center}a:hover{transform:scale(1.2);font-size:25px;color:#7a47f3}h1{margin:30px;font-size:40px;font-family:Roboto,sans-serif;font-weight:900}.links{display:flex;justify-content:center;align-items:center;flex-direction:column;margin:0}.container{height:100%;width:100%;display:flex;align-items:center;flex-direction:column;margin:0;overflow-y:auto}body{color:#fff;background-color:#1a191b}"
    /**
@@ -25,6 +28,13 @@ object MonProductionResultat extends ProductionResultat { // Thomas D et Cody
             Tag("div", List(("class", "links")), resultat2htmlRec(l))))))))
   }
 
+   /**
+    * Sous Fonction de resultat2html qui A partir de la liste de couples (titre,URL),
+    * Produit une liste de Tag correspondant aux balise <a> avec les liens cliquables
+    * 
+    * @param l la liste des couples solution (titre,URL)
+    * @return la liste des balises des liens cliquables
+    */
   private def resultat2htmlRec(l: List[(String, String)]): List[Tag] = {
     l match {
       case (title, link) :: rest =>
