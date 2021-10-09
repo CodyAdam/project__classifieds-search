@@ -4,6 +4,7 @@ This was a group project of 7.
 Features :
 - Search all the corresponding post that match the user input 
 - Allow for OR, AND, NOT logic filter
+- The matching results are displayed on a HTML page with styling 
 
 # TP345-GEN-ALPHA
 
