@@ -1,4 +1,4 @@
-This is an application that web scrappe for advert on the website https://www.vivastreet.com/ and list all the corresponding post related to the user query.
+This is an application that web scrape for advert post on the website [vivastreet](https://www.vivastreet.com/) and list all the corresponding post related to the user query inside a web page.
 This was a group project of 7.
 
 Features :
